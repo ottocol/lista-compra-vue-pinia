@@ -1,9 +1,15 @@
 <script>
+import { useAppStore } from '../stores/appStore'
+  
 export default {
   name: 'NuevoItem',
   components: {},
   data: function() {
     return {nombre: ""}
+  },
+  setup() {
+    const store = useAppStore()
+    return {store}
   }
 }
 </script>
@@ -11,7 +17,7 @@ export default {
 <template>
    <div>
     <input type="text" v-model="nombre">
-    <button @click="$emit('nuevo', nombre)">Añadir</button>
+    <button @click="store.nuevoItem(nombre)">Añadir</button>
    </div> 
 </template>
 
